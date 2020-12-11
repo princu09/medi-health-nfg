@@ -1,0 +1,135 @@
+{% if user.is_authenticated %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}
+        {% endblock title %}</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" type="image/png">
+
+    <!-- Boostrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+
+
+    <!-- Navbar CSS -->
+    <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!-- Poppins Google Fonts Include Here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+
+    <!-- Preloader -->
+    <link rel="stylesheet" href="{% static 'css/pre_loader.css' %}">
+</head>
+
+<body>
+
+    <!-- Preloader -->
+    <div class="loader_bg">
+        <div class="loader">
+            <img src="{% static 'img/Medi-Health-1920.jpg' %}" width="1000" height="auto" alt="">
+        </div>
+    </div>
+
+    <div class="display--row">
+
+        <nav class="col-first nav--menu">
+
+            {% comment %} <div class="collapse-btn-close">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+
+            <div class="collapse-btn">
+                <i class="fas fa-chevron-left"></i>
+            </div> {% endcomment %}
+
+            <!-- Site Logo -->
+            <div class="my-3 logo">
+                <img src="{% static 'img/favicon.png' %}" alt="">
+                <h4>Medi Health NFG</h4>
+            </div>
+
+            <h5 id="todayDate" class="font-weight-bold"></h5>
+            <!-- Admin Logo -->
+            <div class="my-3 container admin--logo">
+                <img src="{% static 'img/doctor.jpg' %}" alt="">
+                <div class="welcome">
+                    <h5>Welcome ,</h5>
+                    <h5>Admin</h5>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+
+            <!-- Main Navigation -->
+            <div class="main--navigation">
+                <ul>
+                    <h5>Main Navigation</h5>
+
+                    <a href="/">
+                        <li><span class="fas fa-home"></span> Dashboard</li>
+                    </a>
+                    <a href="#">
+                        <li><span class="fas fa-capsules"></span>Medicine</li>
+                    </a>
+                    <a href="#">
+                        <li><span class="fas fa-credit-card"></span>Payments</li>
+                    </a>
+                    <a href="#">
+                        <li><span class="fas fa-receipt"></span>Bills</li>
+                    </a>
+                    <a href="#">
+                        <li><span class="fas fa-users"></span>Clients</li>
+                    </a>
+                    <a href="admin">
+                        <li><span class="fas fa-user-cog"></span>Admin Panel</li>
+                    </a>
+                    <a href="handleLogout">
+                        <li><span class="fas fa-sign-out-alt"></span>Logout</li>
+                    </a>
+                </ul>
+            </div>
+
+        </nav>
+
+        <div class="col-second container-fluid main--body">
+            {% block main--body %}
+            {% endblock main--body %}
+        </div>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Preloader JS-->
+    <script src="{% static 'js/preloader.js' %}"></script>
+    <!-- Print Today Date JS-->
+    <script src="{% static 'js/todayDate.js' %}"></script>
+    <!-- Collapse Button JS-->
+    <script src="{% static 'js/collapse.js' %}"></script>
+
+</body>
+
+</html>
+
+{% else %}
+
+<script>
+    location.replace("/handleLogin")
+</script>
+
+{% endif %}

@@ -1,0 +1,155 @@
+/* Nav Menu CSS */
+.nav--menu {
+    min-width: 18%;
+    max-width: 20%;
+    background: #000;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    color: #fff;
+    text-align: center;
+    z-index: 99;
+    transition: 1.5s all ease;
+}
+
+.deactive {
+    top: 0;
+    bottom: 0;
+    left: -100%;
+    transition: 1.5s all ease;
+}
+
+.collapse-btn .fa-chevron-left {
+    position: absolute;
+    top: 0rem;
+    right: 0.5rem;
+    padding: 0.5rem 0.3rem 0.5rem 1rem;
+    font-size: 2rem;
+}
+
+.collapse-btn-close {
+    visibility: hidden;
+}
+
+.active {
+    visibility: visible;
+}
+
+.collapse-btn-close .fa-chevron-right {
+    position: fixed;
+    top: 0rem;
+    left: 0;
+    padding: 0.5rem 0.3rem 0.5rem 1rem;
+    font-size: 2rem;
+    color: #000;
+}
+
+/* Site Logo CSS */
+.logo {
+    justify-content: center;
+    margin: 1rem 1rem;
+    display: inline-flex;
+    padding-top: 1rem;
+}
+
+.logo h4 {
+    padding: 0.5rem 0;
+}
+
+.logo img {
+    margin: 0 0.5rem;
+    max-width: 3rem;
+    min-height: 3rem;
+    max-height: 3rem;
+}
+
+#todayDate {
+    font-family: Arial, Helvetica, sans-serif;
+    color: orangered;
+}
+
+/* Admin Logo CSS */
+.admin--logo {
+    align-items: center;
+    display: flex;
+}
+
+.admin--logo img {
+    padding: 0.5rem;
+    width: 10rem;
+    min-width: 10rem;
+    border-radius: 50%;
+}
+
+.admin--logo h5 {
+    font-weight: 600;
+}
+
+.welcome i {
+    padding: 0.5rem 0.3rem;
+    font-size: 1.5rem;
+}
+
+/* Main Navigation CSS */
+.main--navigation ul h5 {
+    background-color: #111;
+    padding: 1rem 1.5rem;
+    display: flex;
+}
+
+.main--navigation ul li {
+    list-style: none;
+    text-decoration: none;
+    font-size: 1.3rem;
+    padding: 1.5rem 1.5rem;
+    display: flex;
+    line-height: 1;
+}
+
+.main--navigation ul li span {
+    padding: 0rem 0.8rem;
+}
+
+/* anchor link css */
+
+a {
+    text-decoration: none;
+    color: #fff;
+    transition: 0.3s color ease;
+}
+
+a:hover {
+    color: orangered;
+    text-decoration: none;
+}
+
+a:focus {
+    outline: none;
+    border: none;
+}
+
+/* Social Media Color CSS */
+.fa-linkedin,
+.fa-twitter,
+.fa-telegram,
+.fa-whatsapp {
+    transition: 0.3s color ease;
+}
+
+.fa-linkedin:hover {
+    color: #2867b2;
+}
+
+.fa-twitter:hover {
+    color: #0084B4;
+}
+
+.fa-telegram:hover {
+    color: #0088cc;
+}
+
+.fa-whatsapp:hover {
+    color: #4ac959;
+}

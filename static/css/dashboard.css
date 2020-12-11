@@ -1,0 +1,26 @@
+.main--body{
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+}
+.column--menu{
+    margin-top: 1rem;
+    font-size: 1.3rem;
+    display: inline-flex;
+    font-weight: 600;
+}
+.menu--first:hover , .menu--second:hover{
+    cursor: pointer;
+    color: orangered;
+    content: "";
+    border-bottom: 3px solid orangered;
+}
+.menu--first,.menu--second{
+    display: inline-flex;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+.menu--first i ,.menu--second i{
+    padding-right: 0.5rem;
+}
