@@ -1,7 +1,7 @@
 /* Nav Menu CSS */
 .nav--menu {
-    min-width: 18%;
-    max-width: 20%;
+    min-width: 21%;
+    max-width: 21%;
     background: #000;
     min-height: 100vh;
     position: fixed;
@@ -12,6 +12,9 @@
     text-align: center;
     z-index: 99;
     transition: 1.5s all ease;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
 }
 
 .deactive {
@@ -103,7 +106,8 @@
     list-style: none;
     text-decoration: none;
     font-size: 1.3rem;
-    padding: 1.5rem 1.5rem;
+    padding: 1rem 1.5rem;
+    margin: 1rem 0;
     display: flex;
     line-height: 1;
 }
@@ -152,4 +156,67 @@ a:focus {
 
 .fa-whatsapp:hover {
     color: #4ac959;
+}
+
+
+/* Media Query */
+
+@media(max-width:1600px) {
+    .admin--logo {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media(max-width:1300px) {
+    .logo h4 {
+        line-height: 1;
+        font-size: 1.2rem;
+    }
+
+    .logo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media(max-width:1275px) {
+    .main--navigation ul li {
+        font-size: 1.2rem;
+    }
+}
+
+@media(max-width:1215px) {
+    .main--navigation ul li {
+        font-size: 1rem;
+    }
+
+    .main--navigation h5 {
+        font-size: 1rem;
+    }
+}
+
+@media(max-width:1075px) {
+    .main--navigation ul li {
+        font-size: 0.9rem;
+    }
+
+    .main--navigation h5 {
+        font-size: 1rem;
+    }
+
+    #todayDate {
+        font-size: 1rem;
+    }
+}
+
+@media(max-width:1020px) {
+    .main--navigation ul li {
+        font-size: 0.8rem;
+    }
+    .welcome h5 , .welcome i{
+        font-size: 1rem;
+    }
 }

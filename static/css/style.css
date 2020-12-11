@@ -9,12 +9,20 @@
 
 .display--row {
     display: flex;
+    overflow: hidden;
 }
 
 .col-first {
-    max-width: 20%;
+    min-width: 18%;
+    max-width: 18%;
 }
 
 .col-second {
     width: 80%;
+}
+.block--active{
+    content: "";
+    border-bottom: 3px solid;
+    color: orangered;
+    margin: 0.5rem 0;
 }

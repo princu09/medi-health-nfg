@@ -9,14 +9,15 @@ from django.contrib.auth import authenticate, login, logout
 # Gmail Request Add
 import smtplib
 
-
 def index(request):
     return render(request, 'index.html')
+
 
 def notfound(request):
     return render(request, '404.html')
 
 # ======== Authentication APIs ========
+
 
 def handleLogin(request):
     if request.method == 'POST':

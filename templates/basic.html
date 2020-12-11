@@ -1,4 +1,5 @@
 {% if user.is_authenticated %}
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -62,17 +63,17 @@
                 <h4>Medi Health NFG</h4>
             </div>
 
-            <h5 id="todayDate" class="font-weight-bold"></h5>
+            <h5 id="todayDate" class="text-white font-weight-bold"></h5>
             <!-- Admin Logo -->
             <div class="my-3 container admin--logo">
-                <img src="{% static 'img/doctor.jpg' %}" alt="">
+                <img src="/media/{{user.profile.avatar}}" alt="">
                 <div class="welcome">
                     <h5>Welcome ,</h5>
-                    <h5>Admin</h5>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#"><i class="fab fa-telegram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <h5>{{ user.get_full_name}}</h5>
+                    <a target="_blank" href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a target="_blank" href="#"><i class="fab fa-telegram"></i></a>
+                    <a target="_blank" href="#"><i class="fab fa-twitter"></i></a>
+                    <a target="_blank" href="#"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
 
@@ -82,21 +83,23 @@
                     <h5>Main Navigation</h5>
 
                     <a href="/">
-                        <li><span class="fas fa-home"></span> Dashboard</li>
+                        <li class="{% block dashboard %}
+                        {% endblock dashboard %}"><span class="fas fa-home"></span> Dashboard</li>
                     </a>
                     <a href="#">
-                        <li><span class="fas fa-capsules"></span>Medicine</li>
+                        <li class="{% block medicine %}
+                        {% endblock medicine %}"><span class="fas fa-capsules"></span>Medicine</li>
                     </a>
                     <a href="#">
-                        <li><span class="fas fa-credit-card"></span>Payments</li>
+                        <li class=""><span class="fas fa-credit-card"></span>Payments</li>
                     </a>
                     <a href="#">
-                        <li><span class="fas fa-receipt"></span>Bills</li>
+                        <li class=""><span class="fas fa-receipt"></span>Bills</li>
                     </a>
                     <a href="#">
-                        <li><span class="fas fa-users"></span>Clients</li>
+                        <li class=""><span class="fas fa-users"></span>Clients</li>
                     </a>
-                    <a href="admin">
+                    <a href="admin" target="_blank">
                         <li><span class="fas fa-user-cog"></span>Admin Panel</li>
                     </a>
                     <a href="handleLogout">
@@ -121,6 +124,8 @@
     <script src="{% static 'js/todayDate.js' %}"></script>
     <!-- Collapse Button JS-->
     <script src="{% static 'js/collapse.js' %}"></script>
+    <!-- Import Export JS-->
+    <script src="{% static 'js/import_export.js' %}"></script>
 
 </body>
 
