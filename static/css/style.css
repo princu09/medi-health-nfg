@@ -19,10 +19,54 @@
 
 .col-second {
     width: 80%;
+    margin-right: 1rem;
 }
-.block--active{
+
+.block--active {
     content: "";
     border-bottom: 3px solid;
     color: orangered;
     margin: 0.5rem 0;
+}
+
+.page--title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.page--title p {
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+
+.page--title span {
+    position: relative;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.page--title span::before {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    width: 100px;
+    height: 4px;
+    background: orangered;
+    transform: translateX(-50%);
+}
+
+.jumbotron {
+    background: #000;
+    color: #fff;
+}
+
+.jumbotron .slogan {
+    letter-spacing: 3px;
+}
+
+.jumbotron hr {
+    background: #fff;
 }

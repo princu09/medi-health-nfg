@@ -1,0 +1,103 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block title %}
+About | Medi Health NFG
+{% endblock title %}
+
+{% block about %}
+block--active
+{% endblock about %}
+{% block main--body %}
+
+<div class="my-3 text-center page--title about">
+    <p>About NFG</p>
+    <span></span>
+</div>
+
+<div class="about-container container">
+    <div class="row justify-content-between">
+        <div class="col-md-5">
+            <img src="{% static 'img/svg/about.svg' %}" alt="Image" class="img-fluid">
+        </div>
+        <div class="about-data col-md-6">
+            <p class="slogan">About</p>
+            <p class="main--title">About Us</p>
+            <p class="data">
+                We, the owners and employees of NorthfoxGroup, assure you that you will not be
+                bothered by our software.
+                <br>
+                If you have any concerns or misunderstandings about our software, you can mail
+                or call us.
+                <br>
+                We are at your service <span>24x7 </span>.
+            </p>
+            <p class="contact--about"><i class="fas fa-phone-alt"></i> Call Us : <span>+91 91066 93088</span> </p>
+            <p class="contact--about"><i class="fas fa-envelope"></i> Mail Us : <span><a
+                        href="mailto:NorthfoxGroup@hotmail.com">NorthfoxGroup@hotmail.com</a></span></p>
+        </div>
+    </div>
+</div>
+
+<div class="contact--form container col-md-8">
+    <h4 class="mb-4">Contact Form</h4>
+    <form action="/about/" method=POST autocomplete="off">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="">Enter Your Mail</label>
+            <input type="email" class="form-control" name="email" id="email" placeholder="yourname@email.com">
+        </div>
+        <div class="form-group">
+            <label for="">Enter Your Mobile</label>
+            <input type="tel" class="form-control" name="tel" id="tel" placeholder="+91 987 654 3210">
+        </div>
+        <div class="form-group">
+            <label for="">Enter Your Subject</label>
+            <input type="tel" class="form-control" name="subject" id="tel" placeholder="I need some help..">
+        </div>
+        <div class="form-group">
+            <label for="">Enter Your Message Here</label>
+            <textarea class="form-control" name="message" style="resize:none" id="" rows="3"
+                placeholder="Enter Your Message Here..."></textarea>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<div class="data--table">
+
+
+    <table id="table_id" class="display">
+        <thead>
+            <tr>
+                <th>Mail From</th>
+                <th>Subject</th>
+                <th>Phone</th>
+                <th>Message</th>
+                <th>time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in helpContact %}
+            <tr>
+                <td>
+                    {{i.mail_From}}
+                </td>
+                <td>
+                    {{i.subject}}
+                </td>
+                <td>
+                    {{i.telephone}}
+                </td>
+                <td>
+                    {{i.message}}
+                </td>
+                <td>
+                    {{i.timestamp}}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock main--body %}

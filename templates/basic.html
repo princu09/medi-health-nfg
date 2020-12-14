@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="{% static 'css/nav.css' %}">
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/medicine.css' %}">
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
 
     <!-- Poppins Google Fonts Include Here -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -34,6 +36,10 @@
 
     <!-- Preloader -->
     <link rel="stylesheet" href="{% static 'css/pre_loader.css' %}">
+
+    <!-- Data Tables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+
 </head>
 
 <body>
@@ -86,20 +92,27 @@
                         <li class="{% block dashboard %}
                         {% endblock dashboard %}"><span class="fas fa-home"></span> Dashboard</li>
                     </a>
-                    <a href="#">
+                    <a href="/medicine">
                         <li class="{% block medicine %}
-                        {% endblock medicine %}"><span class="fas fa-capsules"></span>Medicine</li>
+                        {% endblock medicine %}"><span class="fas fa-capsules"></span>Medicines</li>
                     </a>
-                    <a href="#">
-                        <li class=""><span class="fas fa-credit-card"></span>Payments</li>
+                    <a href="/payments">
+                        <li class="{% block payment %}
+                        {% endblock payment %}"><span class="fas fa-credit-card"></span>Payments</li>
                     </a>
-                    <a href="#">
-                        <li class=""><span class="fas fa-receipt"></span>Bills</li>
+                    <a href="/bills">
+                        <li class="{% block bills %}
+                        {% endblock bills %}"><span class="fas fa-receipt"></span>Bills</li>
                     </a>
-                    <a href="#">
-                        <li class=""><span class="fas fa-users"></span>Clients</li>
+                    <a href="/clients">
+                        <li class="{% block clients %}
+                        {% endblock clients %}"><span class="fas fa-users"></span>Clients</li>
                     </a>
-                    <a href="admin" target="_blank">
+                    <a href="/about">
+                        <li class="{% block about %}
+                        {% endblock about %}"><span class="fas fa-info-circle"></span>About NFG</li>
+                    </a>
+                    <a href="/admin" target="_blank">
                         <li><span class="fas fa-user-cog"></span>Admin Panel</li>
                     </a>
                     <a href="handleLogout">
@@ -116,6 +129,7 @@
         </div>
 
     </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Preloader JS-->
@@ -124,8 +138,12 @@
     <script src="{% static 'js/todayDate.js' %}"></script>
     <!-- Collapse Button JS-->
     <script src="{% static 'js/collapse.js' %}"></script>
-    <!-- Import Export JS-->
-    <script src="{% static 'js/import_export.js' %}"></script>
+    <!-- Data Display JS-->
+    <script src="{% static 'js/data-display.js' %}"></script>
+
+    <!-- Data Table jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="{% static 'js/data-table.js' %}"></script>
 
 </body>
 

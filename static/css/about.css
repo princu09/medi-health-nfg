@@ -1,0 +1,89 @@
+.about-container {
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-data {
+    font-size: 1.4rem;
+}
+
+.about-data .slogan {
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: orangered;
+    margin-bottom: 0;
+}
+
+.about-data .main--title {
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.about-data .data {
+    font-size: 1.1rem;
+}
+
+.about-data .data span {
+    color: orangered;
+    font-weight: 600;
+}
+
+.about-data .contact--about {
+    margin-right: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: orangered;
+    background: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 0.3rem;
+    transition: color 0.6s ease;
+}
+
+.about-data .contact--about span{
+    color: #555;
+}
+.about-data .contact--about span a{
+    color: #555;
+}
+.contact--form {
+    margin-top: 1rem;
+    margin-bottom: 5rem !important;
+}
+
+.contact--form h4 {
+    font-weight: 600;
+    color: orangered;
+}
+
+.contact--form .form-group {
+    width: 100%;
+}
+
+.contact--form label {
+    font-weight: 500;
+}
+
+.contact--form button {
+    margin-top: 1rem;
+    margin-right: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: orangered;
+    background: white;
+    border: 2px solid orangered;
+    padding: 0.3rem 0.8rem;
+    border-radius: 0.3rem;
+    transition: color 0.6s ease;
+}
+
+.contact--form button:hover {
+    background: orangered;
+    color: white;
+}
+
+.data--table{
+    margin: 5rem 0;
+}
