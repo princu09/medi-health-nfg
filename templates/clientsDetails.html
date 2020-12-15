@@ -10,36 +10,128 @@ block--active
 {% block main--body %}
 
 <div class="my-3 text-center page--title clients">
-    <p>Client Details</p>
+    <a href="/clients/">
+        <p>Client Details</p>
+    </a>
     <span></span>
 </div>
 
-<img src="{% static 'img/svg/client_details.svg' %}" alt="">
-
-<div class="clients--details">
-    <div class="container row d-flex justify-content-space-between">
-        <div class="col">
-            <p>First Name : </p>
+<div class="row d-flex justify-content-center">
+    <img class="col-md-6" src="{% static 'img/svg/client_data.svg' %}" alt="">
+    <div class="client--details col-md-6">
+        <p class="slogan">Client Details : </p>
+        <div class="row mt-2">
+            <div class="col-md-6 font-weight-bold">Client ID :</div>
+            <div class="col-md-6 font-weight-bold">Referance By :</div>
+            <div class="col-md-6 client-info">
+                <p>{{clients.client_ID}}</p>
+            </div>
+            <div class="col-md-6 client-info">
+                <p>{{clients.client_Referance}}</p>
+            </div>
         </div>
-        <div class="col">
-            <p>{{clients.client_First_Name}}</p>
+        <hr class="m-0 p-0">
+        <div class="row mt-2">
+            <div class="col-md-4 font-weight-bold">First Name :</div>
+            <div class="col-md-4 font-weight-bold">Middle Name :</div>
+            <div class="col-md-4 font-weight-bold">Last Name :</div>
+            <div class="col-md-4 client-info">
+                <p>{{clients.client_First_Name}}</p>
+            </div>
+            <div class="col-md-4 client-info">
+                <p>{{clients.client_Middle_Name}}</p>
+            </div>
+            <div class="col-md-4 client-info">
+                <p>{{clients.client_Last_Name}}</p>
+            </div>
         </div>
+        <hr class="m-0 p-0">
+        <div class="row mt-2">
+            <div class="col-md-4 font-weight-bold">DOB :</div>
+            <div class="col-md-4 font-weight-bold">Sex :</div>
+            <div class="col-md-4 font-weight-bold">Status :</div>
+            <div class="col-md-4 client-info">
+                <p>{{clients.client_Date_Of_Birth}}</p>
+            </div>
+            <div class="col-md-4 client-info">
+                <p>{{clients.client_Sex}}</p>
+            </div>
+            <div class="col-md-4 client-info">
+                <p>{{clients.client_Status}}</p>
+            </div>
+        </div>
+        <hr class="m-0 p-0">
+        <div class="row mt-2">
+            <div class="col-md-4 font-weight-bold">Mobile :</div>
+            <div class="col-md-8 font-weight-bold">Email ID :</div>
+            
+            <div class="col-md-4 client-info">
+                <p>{{clients.client_Mobile}}</p>
+            </div>
+            <div class="col-md-8 client-info">
+                <p>{{clients.client_Email}}</p>
+            </div>
+        </div>
+        <hr class="m-0 p-0">
+        <div class="row mt-2">
+            <div class="col-md-6 font-weight-bold">Address 1 :</div>
+            <div class="col-md-6 font-weight-bold">Address 2 :</div>
+            <div class="col-md-6 client-info">
+                <p>{{clients.client_Address_1}}</p>
+            </div>
+            <div class="col-md-6 client-info">
+                <p>{{clients.client_Address_2}}</p>
+            </div>
+        </div>
+        <hr class="m-0 p-0">
+        <div class="row mt-2">
+            <div class="col-md-4 font-weight-bold">City :</div>
+            <div class="col-md-4 font-weight-bold">State :</div>
+            <div class="col-md-4 font-weight-bold">Zip :</div>
+            <div class="col-md-4 client-info">
+                <p>{{clients.client_City}}</p>
+            </div>
+            <div class="col-md-4 client-info">
+                <p>{{clients.client_State}}</p>
+            </div>
+            <div class="col-md-4 client-info">
+                <p>{{clients.client_Zip}}</p>
+            </div>
+        </div>
+        <hr class="m-0 p-0">
     </div>
 </div>
 
-<p>Middle Name : {{clients.client_Middle_Name}}</p>
-<p>Last Name : {{clients.client_Last_Name}}</p>
-<div class="row">
-    <div class="col">
-        <p>{{clients.client_Mobile}}</p>
+{% if clients.client_Diagnosis_1 != "None" %}
+<div class="row mt-5">
+    <div class="col-md-4 font-weight-bold">Client Diagnosis 1 :</div>
+    <div class="col-md-4 font-weight-bold">Client Diagnosis 2 :</div>
+    <div class="col-md-4 font-weight-bold">Client Diagnosis 3 :</div>
+    <div class="col-md-4 client-info">
+        <p>{{clients.client_Diagnosis_1}}</p>
     </div>
-    <div class="col">
-        <p></p>
+    <div class="col-md-4 client-info">
+        <p>{{clients.client_Diagnosis_2}}</p>
     </div>
-    <div class="col">
-        <p></p>
+    <div class="col-md-4 client-info">
+        <p>{{clients.client_Diagnosis_3}}</p>
     </div>
 </div>
-
-
+<hr class="m-0 p-0">
+<div class="row mt-2">
+    <div class="col-md-4 font-weight-bold">Client Diagnosis 4 :</div>
+    <div class="col-md-4 font-weight-bold">Client Diagnosis 5 :</div>
+    <div class="col-md-4 font-weight-bold">Client Diagnosis 6 :</div>
+    <div class="col-md-4 client-info">
+        <p>{{clients.client_Diagnosis_4}}</p>
+    </div>
+    <div class="col-md-4 client-info">
+        <p>{{clients.client_Diagnosis_5}}</p>
+    </div>
+    <div class="col-md-4 client-info">
+        <p>{{clients.client_Diagnosis_6}}</p>
+    </div>
+</div>
+<hr class="p-0 m-0 mb-3">
+{% endif %}
 {% endblock main--body %}

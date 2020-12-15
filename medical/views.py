@@ -88,7 +88,6 @@ def clientsDetails(request, slug):
 
     # return HttpResponse(f"Hello {clients.client_Date_Of_Birth}")
 
-
 def about(request):
 
     Email_ID = 'pmkvyprince@gmail.com'  # Your Email

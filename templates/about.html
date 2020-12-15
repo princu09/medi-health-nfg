@@ -44,20 +44,20 @@ block--active
         {% csrf_token %}
         <div class="form-group">
             <label for="">Enter Your Mail</label>
-            <input type="email" class="form-control" name="email" id="email" placeholder="yourname@email.com">
+            <input type="email" class="form-control" name="email" id="email" placeholder="yourname@email.com" required>
         </div>
         <div class="form-group">
             <label for="">Enter Your Mobile</label>
-            <input type="tel" class="form-control" name="tel" id="tel" placeholder="+91 987 654 3210">
+            <input type="tel" class="form-control" name="tel" id="tel" placeholder="+91 987 654 3210" required>
         </div>
         <div class="form-group">
             <label for="">Enter Your Subject</label>
-            <input type="tel" class="form-control" name="subject" id="tel" placeholder="I need some help..">
+            <input type="tel" class="form-control" name="subject" id="tel" placeholder="I need some help.." required>
         </div>
         <div class="form-group">
             <label for="">Enter Your Message Here</label>
             <textarea class="form-control" name="message" style="resize:none" id="" rows="3"
-                placeholder="Enter Your Message Here..."></textarea>
+                placeholder="Enter Your Message Here..." required></textarea>
         </div>
         <button type="submit">Submit</button>
     </form>

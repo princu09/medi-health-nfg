@@ -1,10 +1,13 @@
+.clients a{
+    color: #000;
+}
 .clients--data {
     width: 100%;
     position: absolute;
     display: grid;
     grid-template-columns: 1fr;
     z-index: 5;
-    height: 100vh;
+    height: 80vh;
 }
 
 .client--add--btn {
@@ -35,7 +38,6 @@
     justify-content: center;
     flex-direction: column;
     padding: 0 1rem;
-    overflow: hidden;
     grid-column: 1 / 2;
     grid-row: 1 / 2;
     pointer-events: all;
@@ -103,11 +105,23 @@
 
 
 /* Client Details Page CSS */
-.clients--details {
-    margin-top: 3rem;
+.client--details {
+    margin-top: 1rem;
+    overflow: hidden;
 }
 
-.clients--details p {
-    font-weight: 600;
-    font-size: 1.1rem;
+.client--details .slogan {
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: orangered;
+    margin-bottom: 0;
+}
+
+.client--details .main--title {
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+.client-info{
+    color: orangered;
 }
