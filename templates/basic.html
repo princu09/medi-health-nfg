@@ -1,5 +1,4 @@
 {% if user.is_authenticated %}
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +23,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/medicine.css' %}">
     <link rel="stylesheet" href="{% static 'css/about.css' %}">
+    <link rel="stylesheet" href="{% static 'css/clients.css' %}">
 
     <!-- Poppins Google Fonts Include Here -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -130,6 +130,11 @@
 
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Preloader JS-->
@@ -140,6 +145,8 @@
     <script src="{% static 'js/collapse.js' %}"></script>
     <!-- Data Display JS-->
     <script src="{% static 'js/data-display.js' %}"></script>
+    <!-- Add Clients JS-->
+    <script src="{% static 'js/add-client.js' %}"></script>
 
     <!-- Data Table jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js"></script>

@@ -14,4 +14,189 @@ block--active
     <span></span>
 </div>
 
+<div class="alert--box">
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+        <strong>Message :</strong> {{message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="clients--data">
+    <div class="table--data client--data--table show--div">
+        <div class="client--add--btn">
+            <p><i class="fas fa-plus"></i> &nbsp;Add Client</p>
+        </div>
+        <table id="table_id" class="display">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Gander</th>
+                    <th>Mobile</th>
+                    <th>Email</th>
+                    <th>DOB</th>
+                    <th>Panding Payment</th>
+                    <th>Total Purchase</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in client %}
+                <tr>
+                    <td>
+                        <a href="/clientsDetails/{{i.client_ID}}" class="client--details">
+                            {{i.client_ID}}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/clientsDetails/{{i.client_ID}}" class="client--details">
+                            {{i.client_First_Name}} {{i.client_Last_Name}}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/clientsDetails/{{i.client_ID}}" class="client--details">
+                            {{i.client_Sex}}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/clientsDetails/{{i.client_ID}}" class="client--details">
+                            {{i.client_Mobile}}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/clientsDetails/{{i.client_ID}}" class="client--details">
+                            {{i.client_Email}}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/clientsDetails/{{i.client_ID}}" class="client--details">
+                            {{i.client_Date_Of_Birth}}
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table--data add--client">
+        <div class="container">
+            <form action="" method="POST" autocomplate="off">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="">First Name</label>
+                        <input name="client_fname" type="text" class="form-control" id="" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="">Middle Name</label>
+                        <input name="client_mname" type="text" class="form-control" id="" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="">Last Name</label>
+                        <input name="client_lname" type="text" class="form-control" id="" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="">Mobile</label>
+                        <input name="client_mobile" type="tel" class="form-control" id="" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="">Email ID</label>
+                        <input name="client_email" type="email" class="form-control" id="" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="">DOB</label>
+                        <input name="client_dob" type="date" class="form-control" id="" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputState">Sex</label>
+                        <select name="client_sex" id="inputState" class="form-control" required>
+                            <option selected>Select...</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="">Marital Status</label>
+                        <select name="client_status" id="inputState" class="form-control" required>
+                            <option selected>Select...</option>
+                            <option value="single">Single</option>
+                            <option value="married">Married</option>
+                            <option value="widowed">Widowed</option>
+                            <option value="divorced">Divorced or Separated</option>
+                            <option value="never_married">Never Married</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="">Referance From</label>
+                        <input name="client_referance" type="text" class="form-control" id="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="">Address</label>
+                    <input name="client_addr1" type="text" class="form-control" id="" placeholder="1234 Main St"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="">Address 2</label>
+                    <input name="client_addr2" type="text" class="form-control" id=""
+                        placeholder="Apartment, studio, or floor" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="">City</label>
+                        <input name="client_city" type="text" class="form-control" id="" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="">State</label>
+                        <input name="client_state" type="text" class="form-control" id="" required>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="">Zip</label>
+                        <input name="client_zip" type="number" class="form-control" id="" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="">Diagnosis 1</label>
+                        <input name="client_diagnosis_1" type="text" class="form-control" id="">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="">Diagnosis 2</label>
+                        <input name="client_diagnosis_2" type="text" class="form-control" id="">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="">Diagnosis 3</label>
+                        <input name="client_diagnosis_3" type="text" class="form-control" id="">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="">Diagnosis 4</label>
+                        <input name="client_diagnosis_4" type="text" class="form-control" id="">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="">Diagnosis 5</label>
+                        <input name="client_diagnosis_5" type="text" class="form-control" id="">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="">Diagnosis 6</label>
+                        <input name="client_diagnosis_6" type="text" class="form-control" id="">
+                    </div>
+                </div>
+                <button type="submit" class="submit--add--client">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
 {% endblock main--body %}

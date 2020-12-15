@@ -5,7 +5,7 @@ from django.contrib import messages
 # Create account
 from django.contrib.auth.models import User
 # import Tables
-from medical.models import HelpContact
+from medical.models import HelpContact, Client
 # Login account
 from django.contrib.auth import authenticate, login, logout
 # Gmail Request Add
@@ -29,7 +29,64 @@ def bills(request):
 
 
 def clients(request):
-    return render(request, 'clients.html')
+    if request.method == 'POST':
+        client_fname = request.POST['client_fname']
+        client_mname = request.POST['client_mname']
+        client_lname = request.POST['client_lname']
+        client_mobile = request.POST['client_mobile']
+        client_email = request.POST['client_email']
+        client_dob = request.POST['client_dob']
+        client_sex = request.POST['client_sex']
+        client_status = request.POST['client_status']
+        client_referance = request.POST['client_referance']
+        client_addr1 = request.POST['client_addr1']
+        client_addr2 = request.POST['client_addr2']
+        client_city = request.POST['client_city']
+        client_state = request.POST['client_state']
+        client_zip = request.POST['client_zip']
+        client_diagnosis_1 = request.POST['client_diagnosis_1']
+        client_diagnosis_2 = request.POST['client_diagnosis_2']
+        client_diagnosis_3 = request.POST['client_diagnosis_3']
+        client_diagnosis_4 = request.POST['client_diagnosis_4']
+        client_diagnosis_5 = request.POST['client_diagnosis_5']
+        client_diagnosis_6 = request.POST['client_diagnosis_6']
+
+        client = Client(
+            client_First_Name=client_fname,
+            client_Middle_Name=client_mname,
+            client_Last_Name=client_lname,
+            client_Mobile=client_mobile,
+            client_Email=client_email,
+            client_Date_Of_Birth=client_dob,
+            client_Sex=client_sex,
+            client_Status=client_status,
+            client_Referance=client_referance,
+            client_Address_1=client_addr1,
+            client_Address_2=client_addr2,
+            client_City=client_city,
+            client_State=client_state,
+            client_Zip=client_zip,
+            client_Diagnosis_1=client_diagnosis_1,
+            client_Diagnosis_2=client_diagnosis_2,
+            client_Diagnosis_3=client_diagnosis_3,
+            client_Diagnosis_4=client_diagnosis_4,
+            client_Diagnosis_5=client_diagnosis_5,
+            client_Diagnosis_6=client_diagnosis_6)
+        client.save()
+        messages.success(request, "New Client Added Successfully !!")
+        return redirect('/clients')
+
+    client = Client.objects.all()
+    context = {'client': client}
+    return render(request, 'clients.html', context)
+
+
+def clientsDetails(request, slug):
+    clients = Client.objects.filter(client_ID=slug).first()
+    context = {'clients': clients}
+    return render(request, 'clientsDetails.html', context)
+
+    # return HttpResponse(f"Hello {clients.client_Date_Of_Birth}")
 
 
 def about(request):

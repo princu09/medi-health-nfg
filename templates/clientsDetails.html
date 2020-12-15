@@ -1,0 +1,45 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block title %}
+Clients | Medi Health NFG
+{% endblock title %}
+
+{% block clients %}
+block--active
+{% endblock clients %}
+{% block main--body %}
+
+<div class="my-3 text-center page--title clients">
+    <p>Client Details</p>
+    <span></span>
+</div>
+
+<img src="{% static 'img/svg/client_details.svg' %}" alt="">
+
+<div class="clients--details">
+    <div class="container row d-flex justify-content-space-between">
+        <div class="col">
+            <p>First Name : </p>
+        </div>
+        <div class="col">
+            <p>{{clients.client_First_Name}}</p>
+        </div>
+    </div>
+</div>
+
+<p>Middle Name : {{clients.client_Middle_Name}}</p>
+<p>Last Name : {{clients.client_Last_Name}}</p>
+<div class="row">
+    <div class="col">
+        <p>{{clients.client_Mobile}}</p>
+    </div>
+    <div class="col">
+        <p></p>
+    </div>
+    <div class="col">
+        <p></p>
+    </div>
+</div>
+
+
+{% endblock main--body %}

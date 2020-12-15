@@ -42,12 +42,14 @@
     transition: color 0.6s ease;
 }
 
-.about-data .contact--about span{
+.about-data .contact--about span {
     color: #555;
 }
-.about-data .contact--about span a{
+
+.about-data .contact--about span a {
     color: #555;
 }
+
 .contact--form {
     margin-top: 1rem;
     margin-bottom: 5rem !important;
@@ -82,8 +84,4 @@
 .contact--form button:hover {
     background: orangered;
     color: white;
-}
-
-.data--table{
-    margin: 5rem 0;
 }

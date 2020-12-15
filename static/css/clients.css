@@ -1,0 +1,113 @@
+.clients--data {
+    width: 100%;
+    position: absolute;
+    display: grid;
+    grid-template-columns: 1fr;
+    z-index: 5;
+    height: 100vh;
+}
+
+.client--add--btn {
+    width: auto;
+    float: right;
+}
+
+.client--add--btn p {
+    margin-bottom: 3rem;
+    color: white;
+    background: orangered;
+    font-weight: 500;
+    border: 2px solid orangered;
+    padding: 0.5rem 0.6rem;
+    border-radius: 5rem;
+    transition: color 0.5s ease;
+}
+
+.client--add--btn p:hover {
+    cursor: pointer;
+    background: none;
+    color: orangered;
+}
+
+
+.table--data {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 1rem;
+    overflow: hidden;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    pointer-events: all;
+}
+
+.client--data--table {
+    z-index: 1;
+    opacity: 0;
+}
+
+.add--client {
+    margin-top: 2rem;
+    z-index: 2;
+    opacity: 0;
+}
+
+.show--div {
+    opacity: 1;
+    z-index: 3;
+}
+
+
+.add--client .submit--add--client {
+    margin-bottom: 3rem;
+    color: white;
+    background: orangered;
+    font-weight: 500;
+    border: 2px solid orangered;
+    padding: 0.5rem 0.6rem;
+    border-radius: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.add--client .submit--add--client:hover {
+    cursor: pointer;
+    background: none;
+    color: orangered;
+}
+
+.add--client .submit--add--client:active,
+.add--client .submit--add--client:visited,
+.add--client .submit--add--client:focus,
+.add--client .submit--add--client::after {
+    cursor: pointer;
+    background: none;
+    color: orangered;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    margin-left: 10px !important;
+}
+
+.alert--box {
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+}
+
+.client--details {
+    color: #000;
+}
+
+.clients--data td {
+    font-weight: 600;
+}
+
+
+/* Client Details Page CSS */
+.clients--details {
+    margin-top: 3rem;
+}
+
+.clients--details p {
+    font-weight: 600;
+    font-size: 1.1rem;
+}

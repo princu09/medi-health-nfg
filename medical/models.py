@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.timezone import now
 
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     avatar = models.ImageField(upload_to='images')
@@ -16,4 +17,32 @@ class HelpContact(models.Model):
     timestamp = models.DateTimeField(default=now)
 
     def __str__(self):
-        return str("Send Mail On") + " " + str(self.timestamp.strftime ("%d/%m/%y")) + " From " + self.mail_From
+        return str("Send Mail On") + " " + str(self.timestamp.strftime("%d/%m/%y")) + " From " + self.mail_From
+
+
+class Client(models.Model):
+    client_ID = models.AutoField(primary_key=True)
+    client_First_Name = models.CharField(max_length=1000)
+    client_Middle_Name = models.CharField(max_length=1000)
+    client_Last_Name = models.CharField(max_length=1000)
+    client_Mobile = models.CharField(max_length=1000)
+    client_Email = models.CharField(max_length=1000)
+    client_Date_Of_Birth = models.DateField(auto_now=False, auto_now_add=False)
+    client_Sex = models.CharField(max_length=1000)
+    client_Status = models.CharField(max_length=1000)
+    client_Referance = models.CharField(max_length=1000, blank=True)
+    client_Address_1 = models.CharField(max_length=1000)
+    client_Address_2 = models.CharField(max_length=1000)
+    client_City = models.CharField(max_length=1000)
+    client_State = models.CharField(max_length=1000)
+    client_Zip = models.CharField(max_length=1000)
+    client_Diagnosis_1 = models.CharField(max_length=1000, blank=True)
+    client_Diagnosis_2 = models.CharField(max_length=1000, blank=True)
+    client_Diagnosis_3 = models.CharField(max_length=1000, blank=True)
+    client_Diagnosis_4 = models.CharField(max_length=1000, blank=True)
+    client_Diagnosis_5 = models.CharField(max_length=1000, blank=True)
+    client_Diagnosis_6 = models.CharField(max_length=1000, blank=True)
+    timestamp = models.TimeField(default=now)
+
+    def __str__(self):
+        return f"Client {self.client_ID} {self.client_First_Name} {self.client_Last_Name}"
