@@ -3,7 +3,15 @@ from django.contrib.auth.models import User
 from django.utils.timezone import now
 
 class MedicalShop(models.Model):
-    pass
+    name = models.CharField(max_length=100 , null=False)
+    address_1 = models.CharField(max_length=100 , null=False)
+    address_2 = models.CharField(max_length=100 , null=False)
+    city = models.CharField(max_length=100 , null=False)
+    state = models.CharField(max_length=100 , null=False)
+    zip = models.CharField(max_length=100 , null=False)
+    logo = models.ImageField(upload_to="medical")
+    email = models.CharField(max_length=100 , null=False)
+    mobile = models.CharField(max_length=100 , null=False)
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

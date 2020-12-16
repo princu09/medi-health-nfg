@@ -1,18 +1,44 @@
 .bills span::before {
-    width: 50px;
+    width: 30px;
 }
 
-.create--bill{
-    margin-bottom: 5rem;
+.invoice--bill {
+    color: orangered;
+    font-size: 2rem;
+    font-weight: 600;
 }
 
-.bills--container {
+.client--id span {
+    color: orangered;
+}
+
+.medical--detail address {
+    color: orangered;
+    font-weight: 600;
+}
+
+.client--id address {
+    font-weight: 600;
+}
+
+.genrate--billsspan::before {
+    width: 80px;
+}
+
+.create--bill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5rem;
+}
+
+/* .bills--container {
     display: flex;
     justify-content: center;
     margin-top: 3rem;
-}
+} */
 
-.bills--container .client--details p {
+.client--details p {
     top: -14px;
     position: relative;
     font-weight: 600;
@@ -23,9 +49,11 @@
     display: inline-block;
 }
 
-.bills--container .client--details {
+.client--details {
     overflow: visible;
     border: 2px solid rgba(0, 0, 0, 0.4);
     padding-right: 1rem;
     padding-left: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 5px;
 }
