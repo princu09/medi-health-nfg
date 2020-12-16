@@ -1,0 +1,31 @@
+.bills span::before {
+    width: 50px;
+}
+
+.create--bill{
+    margin-bottom: 5rem;
+}
+
+.bills--container {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.bills--container .client--details p {
+    top: -14px;
+    position: relative;
+    font-weight: 600;
+    font-size: 1.1rem;
+    background: #fff;
+    padding: 0 1rem;
+    margin: 0;
+    display: inline-block;
+}
+
+.bills--container .client--details {
+    overflow: visible;
+    border: 2px solid rgba(0, 0, 0, 0.4);
+    padding-right: 1rem;
+    padding-left: 1rem;
+}

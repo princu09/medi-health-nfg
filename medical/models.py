@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.timezone import now
 
+class MedicalShop(models.Model):
+    pass
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -36,12 +38,12 @@ class Client(models.Model):
     client_City = models.CharField(max_length=1000)
     client_State = models.CharField(max_length=1000)
     client_Zip = models.CharField(max_length=1000)
-    client_Diagnosis_1 = models.CharField(max_length=1000, blank=True , default="None")
-    client_Diagnosis_2 = models.CharField(max_length=1000, blank=True , default="None")
-    client_Diagnosis_3 = models.CharField(max_length=1000, blank=True , default="None")
-    client_Diagnosis_4 = models.CharField(max_length=1000, blank=True , default="None")
-    client_Diagnosis_5 = models.CharField(max_length=1000, blank=True , default="None")
-    client_Diagnosis_6 = models.CharField(max_length=1000, blank=True , default="None")
+    client_Disease_1 = models.CharField(max_length=1000, blank=True , default="None")
+    client_Disease_2 = models.CharField(max_length=1000, blank=True , default="None")
+    client_Disease_3 = models.CharField(max_length=1000, blank=True , default="None")
+    client_Disease_4 = models.CharField(max_length=1000, blank=True , default="None")
+    client_Disease_5 = models.CharField(max_length=1000, blank=True , default="None")
+    client_Disease_6 = models.CharField(max_length=1000, blank=True , default="None")
     timestamp = models.TimeField(default=now)
 
     def __str__(self):

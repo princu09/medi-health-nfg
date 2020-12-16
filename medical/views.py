@@ -5,7 +5,7 @@ from django.contrib import messages
 # Create account
 from django.contrib.auth.models import User
 # import Tables
-from medical.models import HelpContact, Client
+from medical.models import MedicalShop, HelpContact, Client
 # Login account
 from django.contrib.auth import authenticate, login, logout
 # Gmail Request Add
@@ -25,7 +25,22 @@ def payments(request):
 
 
 def bills(request):
-    return render(request, 'bills.html')
+    clientDetail = ""
+    if request.method == 'POST':
+
+        query = request.POST['clientName'] or request.POST['clientID'] or request.POST['clientMobile']
+
+        if len(query) > 78 or len(query) < 1:
+            clients = Client.objects.none()
+        else:
+            clientDetail = Client.objects.filter(
+                client_First_Name=query).first() or Client.objects.filter(client_ID=query).first() or Client.objects.filter(client_Mobile=query).first()
+
+    clients = Client.objects.all()
+    medicalShop = MedicalShop.objects.all()
+    context = {'clients': clients, 'clientDetail': clientDetail,
+               'medicalShop': medicalShop}
+    return render(request, 'bills.html', context)
 
 
 def clients(request):
@@ -44,12 +59,12 @@ def clients(request):
         client_city = request.POST['client_city']
         client_state = request.POST['client_state']
         client_zip = request.POST['client_zip']
-        client_diagnosis_1 = request.POST['client_diagnosis_1']
-        client_diagnosis_2 = request.POST['client_diagnosis_2']
-        client_diagnosis_3 = request.POST['client_diagnosis_3']
-        client_diagnosis_4 = request.POST['client_diagnosis_4']
-        client_diagnosis_5 = request.POST['client_diagnosis_5']
-        client_diagnosis_6 = request.POST['client_diagnosis_6']
+        client_disease_1 = request.POST['client_disease_1']
+        client_disease_2 = request.POST['client_disease_2']
+        client_disease_3 = request.POST['client_disease_3']
+        client_disease_4 = request.POST['client_disease_4']
+        client_disease_5 = request.POST['client_disease_5']
+        client_disease_6 = request.POST['client_disease_6']
 
         client = Client(
             client_First_Name=client_fname,
@@ -66,12 +81,12 @@ def clients(request):
             client_City=client_city,
             client_State=client_state,
             client_Zip=client_zip,
-            client_Diagnosis_1=client_diagnosis_1,
-            client_Diagnosis_2=client_diagnosis_2,
-            client_Diagnosis_3=client_diagnosis_3,
-            client_Diagnosis_4=client_diagnosis_4,
-            client_Diagnosis_5=client_diagnosis_5,
-            client_Diagnosis_6=client_diagnosis_6)
+            client_Disease_1=client_disease_1,
+            client_Disease_2=client_disease_2,
+            client_Disease_3=client_disease_3,
+            client_Disease_4=client_disease_4,
+            client_Disease_5=client_disease_5,
+            client_Disease_6=client_disease_6)
         client.save()
         messages.success(request, "New Client Added Successfully !!")
         return redirect('/clients')
@@ -87,6 +102,7 @@ def clientsDetails(request, slug):
     return render(request, 'clientsDetails.html', context)
 
     # return HttpResponse(f"Hello {clients.client_Date_Of_Birth}")
+
 
 def about(request):
 
@@ -121,7 +137,7 @@ def about(request):
         helpContact = HelpContact(
             mail_From=from_company, subject=sub, message=msg, telephone=tel)
         helpContact.save()
-
+        return redirect('/about')
     helpContact = HelpContact.objects.all()
     context = {'helpContact': helpContact}
     return render(request, 'about.html', context)
