@@ -9,6 +9,7 @@ urlpatterns = [
     path('medicine/', views.medicine, name="Medicine Page"),
     path('payments/', views.payments, name="Payments Page"),
     path('bills/', views.bills, name="Bills Page"),
+    path('genrateBill/', views.genrateBill, name="Genrate Bill Page"),
     path('clients/', views.clients, name="Clients Page"),
     path('clientsDetails/<str:slug>/', views.clientsDetails , name="Clients Details Page"),
     path('about/', views.about, name="About Page"),

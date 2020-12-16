@@ -64,7 +64,7 @@ block--active
         <div class="row mt-2">
             <div class="col-md-4 font-weight-bold">Mobile :</div>
             <div class="col-md-8 font-weight-bold">Email ID :</div>
-            
+
             <div class="col-md-4 client-info">
                 <p>{{clients.client_Mobile}}</p>
             </div>
@@ -102,7 +102,8 @@ block--active
     </div>
 </div>
 
-{% if clients.client_Disease_1 != "None" %}
+{% if clients.client_Disease_1 == "" %}
+{% else %}
 <div class="row mt-5">
     <div class="col-md-4 font-weight-bold">Client Disease 1 :</div>
     <div class="col-md-4 font-weight-bold">Client Disease 2 :</div>
@@ -134,4 +135,5 @@ block--active
 </div>
 <hr class="p-0 m-0 mb-3">
 {% endif %}
+
 {% endblock main--body %}

@@ -9,7 +9,7 @@ block--active
 {% endblock bills %}
 {% block main--body %}
 
-{% if clientDetail == "" %}
+{% if clientDetail == "" or  clientDetail == None %}
 
 <div class="my-3 text-center page--title bills">
     <p>Bills</p>
@@ -18,7 +18,7 @@ block--active
 
 <div class="create--bill row">
     <div class="col-md-6">
-        <div class="client--details">
+        <div class="client--details--bill">
             <p>Clinet Details</p>
             <form action="" method="POST" autocomplete="off">
                 {% csrf_token %}
@@ -29,7 +29,7 @@ block--active
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="">Client ID</label>
-                        <input type="number" name="clientID" min="1" class="form-control" id="">
+                        <input type="text" name="clientID" min="1" class="form-control" id="">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="">Client Name</label>
@@ -59,149 +59,173 @@ block--active
     <span></span>
 </div>
 
-<div class="mb-5 container">
-    <!-- Header -->
-    <header>
-        <div class="row align-items-center">
-            <div class="col-sm-7 d-flex text-center text-sm-left mb-3 mb-sm-0">
-                <img id="logo" src="{% static 'img/favicon.png' %}" width="50px" height="50px" alt="Medi Health NFG">
-                <div class="ml-2 text-center d-flex flex-column justify-content-center">
-                    <h4 class="mb-0">Medi Health</h4>
-                    <h4 class="mb-0">NFG</h4>
+<form action="/genrateBill/" method="POST">
+    {% csrf_token %}
+    {% comment %} <input type="hidden" name="billNo" value="{{getNewBillNo}}"> {% endcomment %}
+    <input type="hidden" name="clientID" value="{{clientDetail.client_ID}}">
+    <input type="hidden" name="clientName" value="{{clientDetail.client_First_Name}} {{clientDetail.client_Last_Name}}">
+    <input type="hidden" name="clientEmail" value="{{clientDetail.client_Email}}">
+    <input type="hidden" name="clientMobile" value="{{clientDetail.client_Mobile}}">
+
+
+    <div class="mb-5 container">
+        <!-- Header -->
+        <header>
+            <div class="row align-items-center">
+                <div class="col-sm-7 d-flex text-center text-sm-left mb-3 mb-sm-0">
+                    <img id="logo" src="{% static 'img/favicon.png' %}" width="50px" height="50px"
+                        alt="Medi Health NFG">
+                    <div class="ml-2 text-center d-flex flex-column justify-content-center">
+                        <h4 class="mb-0">Medi Health</h4>
+                        <h4 class="mb-0">NFG</h4>
+                    </div>
+                </div>
+                <div class="col-sm-5 text-sm-right">
+                    <p class="invoice--bill">#{{getNewBillNo}}</p>
                 </div>
             </div>
-            <div class="col-sm-5 text-sm-right">
-                <p class="invoice--bill">#45</p>
-            </div>
-        </div>
-        <hr>
-    </header>
+            <hr>
+        </header>
 
-    <!-- Main Content -->
-    <main>
-        <div class="row">
-            <div class="medical--detail col-sm-6 d-flex justify-content-end text-sm-left order-sm-1">
-                <div class="">
-                    <strong class="">Pay To:</strong>
-                    <address class="mt-2">
-                        {% for i in medicalShop %}
-                        {{i.name}}<br>
-                        {{i.address_1}}<br>
-                        {{i.city}} , {{i.zip}} <br>
-                        {{i.email}} <br>
-                        {{i.mobile}}
-                        {% endfor %}
+        <!-- Main Content -->
+        <main>
+            <div class="row">
+                <div class="medical--detail col-sm-6 d-flex justify-content-end text-sm-left order-sm-1">
+                    <div class="">
+                        <strong class="">Pay To:</strong>
+                        <address class="mt-2">
+                            {% for i in medicalShop %}
+                            <span>{{i.name}}</span><br>
+                            {{i.address_1}}<br>
+                            {{i.city}} , {{i.zip}} <br>
+                            <span>{{i.email}}</span> <br>
+                            <span>{{i.mobile}}</span>
+                            {% endfor %}
+                        </address>
+                    </div>
+                </div>
+                <div class="col-sm-6 order-sm-0 client--id"> <strong>Invoiced To:</strong>
+                    <address class="pt-2">
+                        Client ID :
+                        <span class="font-weight-bold">
+                            {{clientDetail.client_ID}}
+                        </span><br>
+                        {{clientDetail.client_First_Name}} {{clientDetail.client_Last_Name}}<br>
+                        {{clientDetail.client_Mobile}} <br>
+                        {{clientDetail.client_Email}}
                     </address>
                 </div>
             </div>
-            <div class="col-sm-6 order-sm-0 client--id"> <strong>Invoiced To:</strong>
-                <address class="pt-2">
-                    Client ID : <span class="font-weight-bold"> {{clientDetail.client_ID}}</span> <br>
-                    {{clientDetail.client_First_Name}} {{clientDetail.client_Last_Name}}<br>
-                    {{clientDetail.client_Mobile}} <br>
-                    {{clientDetail.client_Email}}
-                </address>
+            <div class="row">
+                <div class="col-sm-6 mb-4">
+                    <strong>Payment Method:</strong>
+                    <br>
+                    <span>
+                        <select name="payment" id="" class="mt-2" required>
+                            <option value="">Select...</option>
+                            <option value="Cash">Cash</option>
+                            <option value="Cash">UPI</option>
+                            <option value="Cash">Card</option>
+                        </select>
+                    </span>
+                </div>
+                <div class="col-sm-6 mb-3 text-sm-right"> <strong>Bill Date:</strong><br>
+                    <span>
+                        <input class="mt-2" type="date" name="billDate" id="" required>
+                    </span> </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6 mb-4">
-                <strong>Payment Method:</strong>
-                <br>
-                <span>
-                    <select name="payment" id="" class="mt-2">
-                        <option value="">Select...</option>
-                        <option value="Cash">Cash</option>
-                        <option value="Cash">UPI</option>
-                        <option value="Cash">Card</option>
-                    </select>
-                </span> </div>
-            <div class="col-sm-6 mb-3 text-sm-right"> <strong>Bill Date:</strong><br>
-                <span>
-                    <input class="mt-2" type="date" name="" id="">
-                </span> </div>
-        </div>
-        <div class="card">
-            <div class="card-header"> <span class="font-weight-600 text-4">Booking Summary</span> </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <td class="col-6 border-top-0"><strong>Flight Details</strong></td>
-                                <td class="col-2 text-center border-top-0"><strong>Base Fare</strong></td>
-                                <td class="col-2 text-center border-top-0"><strong>Taxes &amp; Fee</strong></td>
-                                <td class="col-2 text-right border-top-0"><strong>Amount</strong></td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><span class="text-3"><span class="font-weight-500">Indigo 6E-2726</span> - Delhi to
-                                        Sydney</span> <br>
-                                    Travel Date - Sat, 15 Jun 19, 01:50 hrs <br>
-                                    Smith Rhodes </td>
-                                <td class="text-center">$980.00</td>
-                                <td class="text-center">0</td>
-                                <td class="text-right">$980.00</td>
-                            </tr>
-                            <tr>
-                                <td><span class="text-3"><span class="font-weight-500">JetAirways MD-270</span> - Sydney
-                                        to Delhi</span> <br>
-                                    Travel Date - Mon, 01 July 19, 19:38 hrs <br>
-                                    Smith Rhodes </td>
-                                <td class="text-center">$999.00</td>
-                                <td class="text-center">0</td>
-                                <td class="text-right">$999.00</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="bg-light-2 text-right"><strong>Sub Total</strong></td>
-                                <td colspan="2" class="bg-light-2 text-right">$1979.00</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="bg-light-2 text-right"><strong>Promotional Code:</strong><br>
-                                    <span class="text-1">summerfun - 20.00% One Time Discount</span></td>
-                                <td colspan="2" class="bg-light-2 text-right">-$395.80</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="bg-light-2 text-right"><strong>Total</strong></td>
-                                <td colspan="2" class="bg-light-2 text-right">$1583.20</td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div class="card">
+                <div class="card-header"> <span class="font-weight-600 text-4">Medicine Details</span> </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <td class="col-6 border-top-0"><strong>Flight Details</strong></td>
+                                    <td class="col-2 text-center border-top-0"><strong>Base Fare</strong></td>
+                                    <td class="col-2 text-center border-top-0"><strong>Taxes &amp; Fee</strong></td>
+                                    <td class="col-2 text-right border-top-0"><strong>Amount</strong></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="text-3"><span class="font-weight-500">Indigo 6E-2726</span> - Delhi
+                                            to
+                                            Sydney</span> <br>
+                                        Travel Date - Sat, 15 Jun 19, 01:50 hrs <br>
+                                        Smith Rhodes </td>
+                                    <td class="text-center">$980.00</td>
+                                    <td class="text-center">0</td>
+                                    <td class="text-right">$980.00</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="text-3"><span class="font-weight-500">JetAirways MD-270</span> -
+                                            Sydney
+                                            to Delhi</span> <br>
+                                        Travel Date - Mon, 01 July 19, 19:38 hrs <br>
+                                        Smith Rhodes </td>
+                                    <td class="text-center">$999.00</td>
+                                    <td class="text-center">0</td>
+                                    <td class="text-right">$999.00</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="bg-light-2 text-right"><strong>Sub Total</strong></td>
+                                    <td colspan="2" class="bg-light-2 text-right">$1979.00</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="bg-light-2 text-right"><strong>Promotional Code:</strong><br>
+                                        <span class="text-1">summerfun - 20.00% One Time Discount</span></td>
+                                    <td colspan="2" class="bg-light-2 text-right">-$395.80</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="bg-light-2 text-right"><strong>Total</strong></td>
+                                    <td colspan="2" class="bg-light-2 text-right">$1583.20</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
-        <br>
-        <div class="table-responsive d-print-none">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <td class="text-center"><strong>Transaction Date</strong></td>
-                        <td class="text-center"><strong>Gateway</strong></td>
-                        <td class="text-center"><strong>Transaction ID</strong></td>
-                        <td class="text-center"><strong>Amount</strong></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="text-center">07/11/2019</td>
-                        <td class="text-center">Credit Card</td>
-                        <td class="text-center">3912912704</td>
-                        <td class="text-center">$1583.20 USD</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </main>
-    <!-- Footer -->
-    <footer class="text-center">
-        <p class="text-1"><strong>NOTE :</strong> This is computer generated receipt and does not require physical
-            signature.</p>
-        <div class="btn-group btn-group-sm d-print-none"> <a href="javascript:window.print()"
-                class="btn btn-light border text-black-50 shadow-none"><i class="fa fa-print"></i> Print</a> <a href=""
-                class="btn btn-light border text-black-50 shadow-none"><i class="fa fa-download"></i> Download</a>
-        </div>
-    </footer>
-</div>
+            <br>
+
+            {% comment %} <div class="table-responsive d-print-none">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <td class="text-center"><strong>Transaction Date</strong></td>
+                            <td class="text-center"><strong>Gateway</strong></td>
+                            <td class="text-center"><strong>Transaction ID</strong></td>
+                            <td class="text-center"><strong>Amount</strong></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-center">07/11/2019</td>
+                            <td class="text-center">Credit Card</td>
+                            <td class="text-center">3912912704</td>
+                            <td class="text-center">$1583.20 USD</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div> {% endcomment %}
+
+        </main>
+        <!-- Footer -->
+        <footer class="text-center">
+            <p class="text-1"><strong>NOTE :</strong> This is computer generated receipt and does not require physical
+                signature.</p>
+            <div class="btn-group btn-group-sm d-print-none">
+                <a href="javascript:window.print()" class="btn btn-light border text-black-50 shadow-none"><i
+                        class="fa fa-print"></i> Print</a>
+                <button type="submit" class="btn btn-light border text-black-50 shadow-none"><i
+                        class="fa fa-download"></i>
+                    Download</button>
+            </div>
+        </footer>
+    </div>
+
+</form>
+
 {% endif %}
 
 

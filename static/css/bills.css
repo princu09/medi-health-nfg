@@ -12,8 +12,11 @@
     color: orangered;
 }
 
-.medical--detail address {
+.medical--detail address span {
     color: orangered;
+}
+
+.medical--detail address {
     font-weight: 600;
 }
 
@@ -38,7 +41,7 @@
     margin-top: 3rem;
 } */
 
-.client--details p {
+.client--details--bill p {
     top: -14px;
     position: relative;
     font-weight: 600;
@@ -49,7 +52,7 @@
     display: inline-block;
 }
 
-.client--details {
+.client--details--bill {
     overflow: visible;
     border: 2px solid rgba(0, 0, 0, 0.4);
     padding-right: 1rem;

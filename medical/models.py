@@ -2,16 +2,18 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.timezone import now
 
+
 class MedicalShop(models.Model):
-    name = models.CharField(max_length=100 , null=False)
-    address_1 = models.CharField(max_length=100 , null=False)
-    address_2 = models.CharField(max_length=100 , null=False)
-    city = models.CharField(max_length=100 , null=False)
-    state = models.CharField(max_length=100 , null=False)
-    zip = models.CharField(max_length=100 , null=False)
+    name = models.CharField(max_length=100, null=False)
+    address_1 = models.CharField(max_length=100, null=False)
+    address_2 = models.CharField(max_length=100, null=False)
+    city = models.CharField(max_length=100, null=False)
+    state = models.CharField(max_length=100, null=False)
+    zip = models.CharField(max_length=100, null=False)
     logo = models.ImageField(upload_to="medical")
-    email = models.CharField(max_length=100 , null=False)
-    mobile = models.CharField(max_length=100 , null=False)
+    email = models.CharField(max_length=100, null=False)
+    mobile = models.CharField(max_length=100, null=False)
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -40,19 +42,39 @@ class Client(models.Model):
     client_Date_Of_Birth = models.DateField(auto_now=False, auto_now_add=False)
     client_Sex = models.CharField(max_length=1000)
     client_Status = models.CharField(max_length=1000)
-    client_Referance = models.CharField(max_length=1000, blank=True , default="None")
+    client_Referance = models.CharField(
+        max_length=1000, blank=True, default="None")
     client_Address_1 = models.CharField(max_length=1000)
     client_Address_2 = models.CharField(max_length=1000)
     client_City = models.CharField(max_length=1000)
     client_State = models.CharField(max_length=1000)
     client_Zip = models.CharField(max_length=1000)
-    client_Disease_1 = models.CharField(max_length=1000, blank=True , default="None")
-    client_Disease_2 = models.CharField(max_length=1000, blank=True , default="None")
-    client_Disease_3 = models.CharField(max_length=1000, blank=True , default="None")
-    client_Disease_4 = models.CharField(max_length=1000, blank=True , default="None")
-    client_Disease_5 = models.CharField(max_length=1000, blank=True , default="None")
-    client_Disease_6 = models.CharField(max_length=1000, blank=True , default="None")
-    timestamp = models.TimeField(default=now)
+    client_Disease_1 = models.CharField(
+        max_length=1000, blank=True, default="None")
+    client_Disease_2 = models.CharField(
+        max_length=1000, blank=True, default="None")
+    client_Disease_3 = models.CharField(
+        max_length=1000, blank=True, default="None")
+    client_Disease_4 = models.CharField(
+        max_length=1000, blank=True, default="None")
+    client_Disease_5 = models.CharField(
+        max_length=1000, blank=True, default="None")
+    client_Disease_6 = models.CharField(
+        max_length=1000, blank=True, default="None")
+    timestamp = models.DateTimeField(default=now)
 
     def __str__(self):
         return f"Client {self.client_ID} {self.client_First_Name} {self.client_Last_Name}"
+
+
+class Bill(models.Model):
+    id = models.AutoField(primary_key=True, blank=True)
+    name = models.CharField(max_length=100, null=False)
+    mobile = models.CharField(max_length=10, null=False)
+    email = models.CharField(max_length=150, null=False)
+    payment = models.CharField(max_length=10)
+    bill_date = models.DateField(auto_now=False, auto_now_add=False)
+    timestamp = models.TimeField(default=now)
+
+    def __str__(self):
+        return f"Bill {self.id} : {self.name}"

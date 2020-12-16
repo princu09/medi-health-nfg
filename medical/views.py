@@ -5,7 +5,7 @@ from django.contrib import messages
 # Create account
 from django.contrib.auth.models import User
 # import Tables
-from medical.models import MedicalShop, HelpContact, Client
+from medical.models import MedicalShop, HelpContact, Client, Bill
 # Login account
 from django.contrib.auth import authenticate, login, logout
 # Gmail Request Add
@@ -28,20 +28,47 @@ def bills(request):
     clientDetail = ""
     if request.method == 'POST':
 
-        query = request.POST['clientName'] or request.POST['clientID'] or request.POST['clientMobile']
+        query = request.POST['clientName'] or request.POST['clientMobile']
+        queryInt = request.POST['clientID']
+
+        if len(queryInt) < 0 or len(queryInt) == 0:
+            clients = Client.objects.none()
+        else:
+            clientDetail = Client.objects.filter(client_ID=queryInt).first()
 
         if len(query) > 78 or len(query) < 1:
             clients = Client.objects.none()
         else:
             clientDetail = Client.objects.filter(
-                client_First_Name=query).first() or Client.objects.filter(client_ID=query).first() or Client.objects.filter(client_Mobile=query).first()
+                client_First_Name=query).first() or Client.objects.filter(client_Mobile=query).first()
+
+    if len(Bill.objects.all()) > 0:
+        billNo = Bill.objects.last()
+        getNewBillNo = int(billNo.id) + int(1)
+    else:
+        getNewBillNo = 1
 
     clients = Client.objects.all()
+    bills = Bill.objects.all()
     medicalShop = MedicalShop.objects.all()
     context = {'clients': clients, 'clientDetail': clientDetail,
-               'medicalShop': medicalShop}
+               'medicalShop': medicalShop, 'getNewBillNo': getNewBillNo, 'bills': bills}
     return render(request, 'bills.html', context)
 
+
+def genrateBill(request):
+    if request.method == 'POST':
+        clientID = request.POST['clientID']
+        clientName = request.POST['clientName']
+        clientMobile = request.POST['clientMobile']
+        clientEmail = request.POST['clientEmail']
+        billDate = request.POST['billDate']
+        payment = request.POST['payment']
+
+        genrateBill = Bill(name=clientName , mobile=clientMobile , email=clientEmail , bill_date=billDate , payment=payment)
+        genrateBill.save()
+        return redirect("/bills")
+    return render(request , '404.html')
 
 def clients(request):
     if request.method == 'POST':
@@ -98,6 +125,7 @@ def clients(request):
 
 def clientsDetails(request, slug):
     clients = Client.objects.filter(client_ID=slug).first()
+    print(clients.client_Disease_1)
     context = {'clients': clients}
     return render(request, 'clientsDetails.html', context)
 
