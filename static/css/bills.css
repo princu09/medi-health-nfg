@@ -60,3 +60,33 @@
     padding-bottom: 1rem;
     border-radius: 5px;
 }
+
+
+/* create Bill  */
+
+.add--item--btn a {
+    color: orangered;
+    border: 2px solid orangered;
+    padding: 0.3rem 0.8rem;
+    border-radius: 5px;
+}
+
+.table-responsive .delete {
+    color: orangered;
+}
+
+.bill--exp ,.bill--qty ,.bill--pack ,.bill--rate,.bill--cgst,.bill--sgst,
+.bill--shedule {
+    max-width: 50px;
+}
+
+.bill--mrp{
+    max-width: 60px;
+}
+
+.bill--batch{
+    max-width: 100px;
+}
+.bill--item{
+    max-width: 250px;
+}

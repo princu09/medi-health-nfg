@@ -216,7 +216,9 @@ a:focus {
     .main--navigation ul li {
         font-size: 0.8rem;
     }
-    .welcome h5 , .welcome i{
+
+    .welcome h5,
+    .welcome i {
         font-size: 1rem;
     }
 }

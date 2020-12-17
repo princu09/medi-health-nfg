@@ -1,3 +1,4 @@
+<!--3006-->
 {% extends 'basic.html' %}
 {% load static %}
 {% block title %}
@@ -50,7 +51,52 @@ block--active
     </div>
 </div>
 
+<div class="bill--data my-5">
+    <table id="table_id" class="display">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Bill Date</th>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>Email</th>
+                <th>Payment</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in bills %}
+            <tr>
+                <td class="font-weight-bold">
+                    #{{i.id}}
+                </td>
+                <td class="font-weight-bold">
+                    {{i.bill_date}}
+                </td>
+                <td class="font-weight-bold">
+                    {{i.name}}
+                </td>
+                <td class="font-weight-bold">
+                    {{i.mobile}}
+                </td>
+                <td class="font-weight-bold">
+                    {{i.email}}
+                </td>
+                <td class="font-weight-bold">
+                    {{i.payment}}
+                </td>
+                <td class="font-weight-bold">
+                    {{i.amount}}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
 {% else %}
+
+<!--================= Genrate Bill Here =================-->
 
 <div class="my-3 text-center page--title genrate--bills">
     <a href="/bills" style="color:#000">
@@ -68,7 +114,7 @@ block--active
     <input type="hidden" name="clientMobile" value="{{clientDetail.client_Mobile}}">
 
 
-    <div class="mb-5 container">
+    <div class="mb-5">
         <!-- Header -->
         <header>
             <div class="row align-items-center">
@@ -141,48 +187,72 @@ block--active
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <td class="col-6 border-top-0"><strong>Flight Details</strong></td>
-                                    <td class="col-2 text-center border-top-0"><strong>Base Fare</strong></td>
-                                    <td class="col-2 text-center border-top-0"><strong>Taxes &amp; Fee</strong></td>
-                                    <td class="col-2 text-right border-top-0"><strong>Amount</strong></td>
+                                    <td class="col-2 border-top-0"><strong>Product Name</strong></td>
+                                    <td class="col-1 border-top-0"><strong>Batch</strong></td>
+                                    <td class="col-1 border-top-0"><strong>EXP</strong></td>
+                                    <td class="col-1 border-top-0"><strong>Qty</strong></td>
+                                    <td class="col-1 border-top-0"><strong>Pack</strong></td>
+                                    <td class="col-1 border-top-0"><strong>MRP</strong></td>
+                                    <td class="col-1 border-top-0"><strong>Rate</strong></td>
+                                    <td class="col-1 border-top-0"><strong>CGST</strong></td>
+                                    <td class="col-1 border-top-0"><strong>SGST</strong></td>
+                                    <td class="col-1 border-top-0"><strong>SHEDULE</strong></td>
+                                    <td class="col-1 border-top-0"><strong>Total</strong></td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><span class="text-3"><span class="font-weight-500">Indigo 6E-2726</span> - Delhi
-                                            to
-                                            Sydney</span> <br>
-                                        Travel Date - Sat, 15 Jun 19, 01:50 hrs <br>
-                                        Smith Rhodes </td>
-                                    <td class="text-center">$980.00</td>
-                                    <td class="text-center">0</td>
+                                    <td class="justify-conent-space-between align-items-center d-flex">
+                                        <a style="visibility: hidden;" class="delete mr-3" href="javascript:;" title="Remove Item">
+                                            <i class="fas fa-times"></i></a>
+                                        <input class="bill--item" type="text"></td>
+                                    <td class="text-center"><input class="bill--batch" type="text"></td>
+                                    <td class="text-center"><input class="bill--exp" type="text"></td>
+                                    <td class="text-center"><input class="bill--qty" type="text"></td>
+                                    <td class="text-center"><input class="bill--pack" type="text"></td>
+                                    <td class="text-center"><input class="bill--mrp" type="text"></td>
+                                    <td class="text-center"><input class="bill--rate" type="text"></td>
+                                    <td class="text-center"><input class="bill--cgst" type="text"></td>
+                                    <td class="text-center"><input class="bill--sgst" type="text"></td>
+                                    <td class="text-center"><input class="bill--shedule" type="text"></td>
                                     <td class="text-right">$980.00</td>
                                 </tr>
                                 <tr>
-                                    <td><span class="text-3"><span class="font-weight-500">JetAirways MD-270</span> -
-                                            Sydney
-                                            to Delhi</span> <br>
-                                        Travel Date - Mon, 01 July 19, 19:38 hrs <br>
-                                        Smith Rhodes </td>
-                                    <td class="text-center">$999.00</td>
-                                    <td class="text-center">0</td>
-                                    <td class="text-right">$999.00</td>
+                                    <td class="justify-conent-space-between align-items-center d-flex">
+                                        <a style="visibility: hidden;" class="delete mr-3" href="javascript:;" title="Remove Item">
+                                            <i class="fas fa-times"></i></a>
+                                        <input class="bill--item" type="text"></td>
+                                    <td class="text-center"><input class="bill--batch" type="text"></td>
+                                    <td class="text-center"><input class="bill--exp" type="text"></td>
+                                    <td class="text-center"><input class="bill--qty" type="text"></td>
+                                    <td class="text-center"><input class="bill--pack" type="text"></td>
+                                    <td class="text-center"><input class="bill--mrp" type="text"></td>
+                                    <td class="text-center"><input class="bill--rate" type="text"></td>
+                                    <td class="text-center"><input class="bill--cgst" type="text"></td>
+                                    <td class="text-center"><input class="bill--sgst" type="text"></td>
+                                    <td class="text-center"><input class="bill--shedule" type="text"></td>
+                                    <td class="text-right">$980.00</td>
+                                </tr>
+                                <tr class="add--item--btn">
+                                    <td colspan="12">
+                                        <a class="addRow" href="javascript:;" title="Add Item">Add Item</a>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2" class="bg-light-2 text-right"><strong>Sub Total</strong></td>
-                                    <td colspan="2" class="bg-light-2 text-right">$1979.00</td>
+                                    <td colspan="10" class="bg-light-2 text-right"><strong>Sub Total</strong></td>
+                                    <td colspan="1" class="bg-light-2 text-right">$1979.00</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2" class="bg-light-2 text-right"><strong>Promotional Code:</strong><br>
-                                        <span class="text-1">summerfun - 20.00% One Time Discount</span></td>
-                                    <td colspan="2" class="bg-light-2 text-right">-$395.80</td>
+                                    <td colspan="10" class="bg-light-2 text-right"><strong>Discount :</strong></td>
+                                    <td colspan="1" class="bg-light-2 text-right">-$395.80</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2" class="bg-light-2 text-right"><strong>Total</strong></td>
-                                    <td colspan="2" class="bg-light-2 text-right">$1583.20</td>
+                                    <td colspan="10" class="bg-light-2 text-right"><strong>Grand Total</strong></td>
+                                    <td colspan="1" class="bg-light-2 text-right">$1583.20</td>
                                 </tr>
                             </tbody>
                         </table>
+
                     </div>
                 </div>
             </div>
@@ -227,6 +297,5 @@ block--active
 </form>
 
 {% endif %}
-
 
 {% endblock main--body %}

@@ -74,6 +74,7 @@ class Bill(models.Model):
     email = models.CharField(max_length=150, null=False)
     payment = models.CharField(max_length=10)
     bill_date = models.DateField(auto_now=False, auto_now_add=False)
+    amount = models.IntegerField(null=False)
     timestamp = models.TimeField(default=now)
 
     def __str__(self):

@@ -125,7 +125,6 @@ def clients(request):
 
 def clientsDetails(request, slug):
     clients = Client.objects.filter(client_ID=slug).first()
-    print(clients.client_Disease_1)
     context = {'clients': clients}
     return render(request, 'clientsDetails.html', context)
 
